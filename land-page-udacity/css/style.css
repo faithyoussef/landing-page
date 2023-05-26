@@ -117,7 +117,249 @@ section:nth-of-type(even) .landing__container {
     margin-left: auto;
     text-align: right; 
 }
+html {
+    scroll-behavior: smooth;
+}
 
+html, body {
+    height: 100%;
+}
+
+body {
+    color: #fff;
+    background: rgb(250,158,169);
+    background: linear-gradient(58deg, rgba(250,158,169,1) 0%, rgba(124,240,255,1) 50%, rgba(0,161,233,1) 100%);
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: Roboto, 'Open Sans', Helvetica;
+    font-size: medium;
+    line-height: 1.5em;
+    margin: 0;
+}
+
+h1, h2, h3 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    word-spacing: 1em;
+}
+
+/* This is the container where our content (typically, sections) will be added to
+ * I added that because background would make the text appear unclear, and I liked to use a background image,
+ * not to mention that we need this for another reason: Making text look consistent, setting margins, etc.
+ */
+
+.container {
+    margin: 0 50px; /* Need to do that to look nice with the nav and footer classes */
+    padding: 25px;
+    min-height: 650px;
+    background-color: rgb(231, 231, 231);
+    border: 1px solid white;
+    border-top: 0;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+ /* Navigation Style */
+
+.nav {
+    margin: 50px;
+    margin-bottom: 0; /* Just to ensure that there's no gap between this nav class and our container class */
+    background-color: black;
+    border: 1px solid black;
+    overflow: hidden;
+    z-index: 100;
+}
+
+.nav-sticky {
+    width: 100%;
+    top: 0;
+    position: fixed;
+    margin: 0 !important;
+}
+
+.nav-ul { /* Alter default ul properties for navigation, and probably add new properties in the future */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-li  { /* Disable default properties (such as, remove the bullet list style, make navigation menu appear inline instead of making it look like a list) */
+    list-style-type: none;
+    display: inline-block;
+    padding: 24px;
+    vertical-align: middle; 
+    /* Vertical align doesn't matter so much here, but it's helpful when you use a background color i.e. li-active, 
+     * so margin gaps don't make the style look bad (i.e. bottom space), also, I have to set it here so that the other inactive items
+     * align with each other, and with the li-active class itself 
+     */
+    background-color: #000;
+    color: #fff;
+    height: 24px;
+    transition: ease-in 2s;
+}
+
+.nav-li:hover {
+    background-color: gray;
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+}
+
+.li-active {
+    background-color: gray;
+    color: #fff;
+}
+
+.nav-link {
+    color: #fff;
+    text-decoration: none; /* Remove the underline */
+}
+
+.nav-link:hover {
+    color: black;
+}
+
+.nav-logo { /* Trying to make the nav-logo list item look different */
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: black;
+    color: #fff;
+}
+
+.nav-logo > img { /* I could've used the HTML attributes to do the height and width */
+    width: 30px;
+    height: 24px;
+    vertical-align: middle; /* This does the job to keep the logo icon in the same align as the nav items (list) */
+}
+
+.hamburger-li {
+    display: none; /* Hide the hamburger list by default */
+}
+
+/* Footer */
+
+.footer { /* Designed similar to nav to look better */
+    margin: 50px;
+    margin-top: 0; /* Just to ensure that there's no gap between this footer class and our container class */
+    background-color: #000;
+    text-align: center;
+    padding: 24px;
+}
+
+/* Section */
+
+.section {
+    background-color: rgba(237, 235, 235, 1);
+    color: gray;
+    padding: 100px;
+    transition: ease-out 1s;
+    cursor: pointer;
+    z-index: 50;
+}
+
+.section-active {
+    background-color: rgba(237, 235, 235, 1);
+    color: black;
+    transition: ease-in 1s;
+}
+
+.section + .section {
+    margin-top: 10px;
+}
+
+/* Scroll top */
+
+.scroll-top {
+    position: fixed;
+    bottom: 60px;
+    z-index: 99;
+    right: 60px;
+    display: none;
+    background-color: black;
+    text-align: center;
+    border: 1px solid black;
+    padding: 5px;
+    cursor: pointer;
+}
+
+/* Hide Elements */
+
+.hide-element {
+    display: none;
+}
+
+/* Some effects (heart styling, donuts, donut image, etc.) */
+
+#love:hover {
+    color: red;
+    cursor: pointer;
+    user-select: none;
+}
+
+.donut-icon {
+    margin-left: 150px;
+    position: absolute;
+    z-index: 0;
+    transition: 2s ease-in;
+    user-select: none;
+}
+
+.donut-right {
+    right: 100px;
+}
+
+.donut-icon > img + img {
+    margin-left: 5px;
+}
+
+/* Mobile responsiveness */
+
+@media only screen and (max-width: 800px) {
+    .container {
+        margin: 0 !important;
+        margin-top: 5px !important;
+        padding: 0;
+        width: 100%;
+        border: none;
+    }
+
+    .section {
+        padding: 5px;
+    }
+
+    .section-active {
+        border-radius: 0;
+    }
+
+    .donut-icon {
+        display: none;
+    }
+
+    .footer {
+        width: 100%;
+        margin: 0;
+        padding-left: 35px;
+        text-align: left;
+    }
+
+    .scroll-top {
+        bottom: 15px;
+        right: 25px;
+    }
+
+    .nav {
+        margin: 0;
+        width: 100%;
+        max-height: 300px;
+        overflow-y: scroll;
+    }
+
+    .nav-li:not(:first-child) {
+        display: none;
+    }
+
+    .hamburger-li {
+        display: inline-block !important;
+    }
+}
 /* Background Circles */
 /* Note that background circles are created with psuedo elements before and after */
 /* Circles appear to be random do to use of :nth-of-type psuedo class */
