@@ -1,243 +1,211 @@
-html {
-    scroll-behavior: smooth;
-}
-
-html, body {
-    height: 100%;
-}
-
 body {
+    background: rgb(136,203,171);
+    background: linear-gradient(0deg, rgba(136,203,171,1) 0%, rgba(0,13,60,1) 100%);
+    margin: 0;
+    font-family: 'Merriweather', serif;
     color: #fff;
-    background: rgb(250,158,169);
-    background: linear-gradient(58deg, rgba(250,158,169,1) 0%, rgba(124,240,255,1) 50%, rgba(0,161,233,1) 100%);
-    background-attachment: fixed;
-    background-size: cover;
-    font-family: Roboto, 'Open Sans', Helvetica;
-    font-size: medium;
-    line-height: 1.5em;
+}
+
+
+/* Typeography General*/
+h1 {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 3em;
+    margin: 2em 1rem;
+}
+
+@media only screen and (min-width: 35em){
+    h1 {
+        font-size: 7em;
+        margin: 2em 4rem 1em;
+    }
+}
+
+h2 {
+    border-bottom: 1px solid #cc1;
+    font-family: 'Oxygen', Sans-Serif;
+    font-size: 3em;
+    color: #fff;
+}
+
+p {
+    line-height: 1.6em;
+    color: #eee;
+}
+
+/* ---- Layout Rules ---- */
+main {
+    margin: 10vh 1em 10vh;
+}
+
+.main-hero {
+    min-height: 40vh;
+    padding-top: 3em;
+}
+
+section {
+    position: relative;
+    min-height: 80vh;
+}
+
+
+/* ---- Module Rules ---- */
+
+/* Navigation Styles*/
+.navbar__menu ul {
+    padding-left: 0;
     margin: 0;
+    text-align: right;
 }
 
-h1, h2, h3 {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    word-spacing: 1em;
-}
-
-/* This is the container where our content (typically, sections) will be added to
- * I added that because background would make the text appear unclear, and I liked to use a background image,
- * not to mention that we need this for another reason: Making text look consistent, setting margins, etc.
- */
-
-.container {
-    margin: 0 50px; /* Need to do that to look nice with the nav and footer classes */
-    padding: 25px;
-    min-height: 650px;
-    background-color: rgb(231, 231, 231);
-    border: 1px solid white;
-    border-top: 0;
-    text-align: justify;
-    text-justify: inter-word;
-}
-
- /* Navigation Style */
-
-.nav {
-    margin: 50px;
-    margin-bottom: 0; /* Just to ensure that there's no gap between this nav class and our container class */
-    background-color: black;
-    border: 1px solid black;
-    overflow: hidden;
-    z-index: 100;
-}
-
-.nav-sticky {
-    width: 100%;
-    top: 0;
-    position: fixed;
-    margin: 0 !important;
-}
-
-.nav-ul { /* Alter default ul properties for navigation, and probably add new properties in the future */
-    margin: 0;
-    padding: 0;
-}
-
-.nav-li  { /* Disable default properties (such as, remove the bullet list style, make navigation menu appear inline instead of making it look like a list) */
-    list-style-type: none;
+.navbar__menu li {
     display: inline-block;
-    padding: 24px;
-    vertical-align: middle; 
-    /* Vertical align doesn't matter so much here, but it's helpful when you use a background color i.e. li-active, 
-     * so margin gaps don't make the style look bad (i.e. bottom space), also, I have to set it here so that the other inactive items
-     * align with each other, and with the li-active class itself 
-     */
-    background-color: #000;
-    color: #fff;
-    height: 24px;
-    transition: ease-in 2s;
 }
 
-.nav-li:hover {
-    background-color: gray;
-    color: #fff;
-    cursor: pointer;
-    user-select: none;
-}
-
-.li-active {
-    background-color: gray;
-    color: #fff;
-}
-
-.nav-link {
-    color: #fff;
-    text-decoration: none; /* Remove the underline */
-}
-
-.nav-link:hover {
-    color: black;
-}
-
-.nav-logo { /* Trying to make the nav-logo list item look different */
+.navbar__menu .menu__link {
+    display: block;
+    padding: 1em;
     font-weight: bold;
-    text-transform: uppercase;
-    background-color: black;
+    text-decoration: none;
+    color: #000;
+}
+
+.navbar__menu .menu__link:hover {
+    background: #333;
+    color: #fff;
+    transition: ease 0.3s all;
+}
+
+/* Header Styles */
+.page__header {
+    background: #fff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+}
+
+/* Footer Styles */
+.page__footer {
+    background: #000;
+    padding: 3em;
     color: #fff;
 }
 
-.nav-logo > img { /* I could've used the HTML attributes to do the height and width */
-    width: 30px;
-    height: 24px;
-    vertical-align: middle; /* This does the job to keep the logo icon in the same align as the nav items (list) */
+.page__footer p{
+    color: #fff;
 }
 
-.hamburger-li {
-    display: none; /* Hide the hamburger list by default */
+
+/* ---- Theme Rules ---- */
+/* Landing Container Styles */
+.landing__container {
+    padding: 1em;
+    text-align: left;
 }
 
-/* Footer */
-
-.footer { /* Designed similar to nav to look better */
-    margin: 50px;
-    margin-top: 0; /* Just to ensure that there's no gap between this footer class and our container class */
-    background-color: #000;
-    text-align: center;
-    padding: 24px;
+@media only screen and (min-width: 35em){
+    .landing__container {
+        max-width: 50em;
+        padding: 4em;
+    }
 }
 
-/* Section */
-
-.section {
-    background-color: rgba(237, 235, 235, 1);
-    color: gray;
-    padding: 100px;
-    transition: ease-out 1s;
-    cursor: pointer;
-    z-index: 50;
+section:nth-of-type(even) .landing__container {
+    margin-right: 0;
+    margin-left: auto;
+    text-align: right; 
 }
 
-.section-active {
-    background-color: rgba(237, 235, 235, 1);
-    color: black;
-    transition: ease-in 1s;
-}
-
-.section + .section {
-    margin-top: 10px;
-}
-
-/* Scroll top */
-
-.scroll-top {
-    position: fixed;
-    bottom: 60px;
-    z-index: 99;
-    right: 60px;
-    display: none;
-    background-color: black;
-    text-align: center;
-    border: 1px solid black;
-    padding: 5px;
-    cursor: pointer;
-}
-
-/* Hide Elements */
-
-.hide-element {
-    display: none;
-}
-
-/* Some effects (heart styling, donuts, donut image, etc.) */
-
-#love:hover {
-    color: red;
-    cursor: pointer;
-    user-select: none;
-}
-
-.donut-icon {
-    margin-left: 150px;
+/* Background Circles */
+/* Note that background circles are created with psuedo elements before and after */
+/* Circles appear to be random do to use of :nth-of-type psuedo class */
+section:nth-of-type(odd) .landing__container::before {
+    content: '';
+    background: rgba(255, 255, 255, 0.187);
     position: absolute;
-    z-index: 0;
-    transition: 2s ease-in;
-    user-select: none;
+    z-index: -5;
+    width: 20vh;
+    height: 20vh;
+    border-radius: 50%;
+    opacity: 0;
+    transition: ease 0.5s all;
 }
 
-.donut-right {
-    right: 100px;
+section:nth-of-type(even) .landing__container::before {
+    content: '';
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
+    position: absolute;
+    top: 3em;
+    right: 3em;
+    z-index: -5;
+    width: 10vh;
+    height: 10vh;
+    border-radius: 50%;
+    opacity: 0;
+    transition: ease 0.5s all;
 }
 
-.donut-icon > img + img {
-    margin-left: 5px;
+section:nth-of-type(3n) .landing__container::after {
+    content: '';
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -5;
+    width: 10vh;
+    height: 10vh;
+    border-radius: 50%;
+    opacity: 0;
+    transition: ease 0.5s all;
 }
 
-/* Mobile responsiveness */
+section:nth-of-type(3n + 1) .landing__container::after {
+    content: '';
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
+    position: absolute;
+    right: 20vw;
+    bottom: -5em;
+    z-index: -5;
+    width: 15vh;
+    height: 15vh;
+    border-radius: 50%;
+    opacity: 0;
+    transition: ease 0.5s all;
+}
 
-@media only screen and (max-width: 800px) {
-    .container {
-        margin: 0 !important;
-        margin-top: 5px !important;
-        padding: 0;
-        width: 100%;
-        border: none;
-    }
 
-    .section {
-        padding: 5px;
-    }
+/* ---- Theme State Rules ---- */
+/* Section Active Styles */
+/* Note: your-active-class class is applied through javascript. You should update the class here and in the index.html to what you set in your javascript file.  */
+section.your-active-class {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+}
 
-    .section-active {
-        border-radius: 0;
-    }
+section.your-active-class .landing__container::before {
+    opacity: 1;
+    animation: rotate 4s linear 0s infinite forwards;
+}
 
-    .donut-icon {
-        display: none;
-    }
+section.your-active-class .landing__container::after {
+    opacity: 1;
+    animation: rotate 5s linear 0s infinite forwards reverse;
+}
 
-    .footer {
-        width: 100%;
-        margin: 0;
-        padding-left: 35px;
-        text-align: left;
-    }
-
-    .scroll-top {
-        bottom: 15px;
-        right: 25px;
-    }
-
-    .nav {
-        margin: 0;
-        width: 100%;
-        max-height: 300px;
-        overflow-y: scroll;
-    }
-
-    .nav-li:not(:first-child) {
-        display: none;
-    }
-
-    .hamburger-li {
-        display: inline-block !important;
-    }
+/* Section Active Styles Keyframe Animations */
+@keyframes rotate {
+	from {
+		transform: rotate(0deg)
+		           translate(-1em)
+		           rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg)
+		           translate(-1em) 
+		           rotate(-360deg);
+	}
 }
